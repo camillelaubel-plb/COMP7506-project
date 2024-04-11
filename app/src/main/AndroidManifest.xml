@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="njust.dzh.warehouse">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Warehouse">
+        <activity android:name=".app.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".app.LoginActivity"/>
+        <activity android:name=".activity.UserOperatorActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
+        <activity android:name=".activity.UserListActivity" />
+        <activity android:name=".activity.UserInsertActivity" />
+        <activity android:name=".activity.GoodsListActivity" />
+        <activity android:name=".app.RegisterActivity" />
+        <activity android:name=".activity.GoodsOperatorActivity" />
+        <activity android:name=".activity.GoodsInsertActivity" />
+    </application>
+
+</manifest>

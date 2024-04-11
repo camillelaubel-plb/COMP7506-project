@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/user">
+    <ImageView
+        android:id="@+id/gym_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/userbg" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/username_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="用户名"
+            android:textColor="@color/DeepSkyBlue"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/password_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="密码"
+            android:textColor="@color/DeepSkyBlue"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/power_tv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="权限"
+            android:textColor="@color/DeepSkyBlue"
+            android:textSize="25sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+        <EditText
+            android:id="@+id/username_ed"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:hint="用户名"
+            android:textColor="@color/ForestGreen"
+            android:textSize="20sp" />
+        <EditText
+            android:id="@+id/password_ed"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:hint="密码"
+            android:textColor="@color/ForestGreen"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <Spinner
+                android:id="@+id/power_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/power"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/update_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_selector2"
+        android:gravity="center"
+        android:text="修 改"
+        android:textColor="@color/White"
+        android:textSize="25sp" />
+    <Button
+        android:id="@+id/delete_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_selector2"
+        android:gravity="center"
+        android:text="删 除"
+        android:textColor="@color/White"
+        android:textSize="25sp" />
+
+</LinearLayout>

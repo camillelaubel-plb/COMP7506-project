@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/goods">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/exhibition"/>
+    <TextView
+        android:id="@+id/goods_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="商品名"
+        android:textColor="@color/DeepSkyBlue"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/goods_name_ed"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="请输入商品名"
+        android:textColor="@color/ForestGreen"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/amount_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="数量"
+        android:textColor="@color/DeepSkyBlue"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/amount_ed"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:hint="请输入数量"
+        android:textColor="@color/ForestGreen"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/insert_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="添 加"
+        android:textColor="@color/White"
+        android:textSize="25sp" />
+    <Button
+        android:id="@+id/exit_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="返 回"
+        android:textColor="@color/White"
+        android:textSize="25sp" />
+
+</LinearLayout>
