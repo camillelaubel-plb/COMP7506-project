@@ -112,7 +112,7 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
                         } else {
                             Goods g = smb.searchGoods(goodsName);
                             //判断用户是否存在
-                            if (goodsName.equals(g.getGoodsName())) {
+                            if (goodsName.equals(g.getProductName())) {
                                 tvAmount.setText("数量：" + g.getAmount());
                                 tvId.setText("编号：" + g.getId());
                                 tvAmount.setVisibility(View.VISIBLE);
@@ -142,7 +142,7 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
                         //获取商品对象
                         Goods tempGoods = smb.searchGoods(goodsName2);
                         //判断商品是否存在
-                        if (tempGoods.getGoodsName() != null) {
+                        if (tempGoods.getProductName() != null) {
                             String amounts2 = edAmount.getText().toString().trim();
                             if(amounts2.isEmpty()){//如果数量为空
                                 Toast.makeText(GoodsListActivity.this,"请输入数量",Toast.LENGTH_SHORT).show();
@@ -185,7 +185,7 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
                         int amount3 = Integer.valueOf(amounts3);
                         //判断产品是否存在
                         Goods tempGoods3 = smb.searchGoods(goodsName3);
-                        if (tempGoods3.getGoodsName() != null) {//如果商品存在
+                        if (tempGoods3.getProductName() != null) {//如果商品存在
                             if(amount3<=tempGoods3.getAmount()) {//如果数量足够
                                 int newAmount3 = tempGoods3.getAmount() - amount3;
                                 tempGoods3.setAmount(newAmount3);
@@ -208,7 +208,7 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
         }
     }
     public void updateList(){
-        final List<Goods> goodsList=smb.getAllGoods();
+        final List<Goods> goodsList=smb.getAllProducts();
         goodsAdapter=new GoodsAdapter(this,goodsList);
         lvGoods.setAdapter(goodsAdapter);
     }
@@ -217,7 +217,7 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
     protected void onResume() {
         super.onResume();
         //从数据库中查询所有商品信息
-        final List<Goods> goodsList = smb.getAllGoods();
+        final List<Goods> goodsList = smb.getAllProducts();
 
         //绑定适配器
         goodsAdapter = new GoodsAdapter(this, goodsList);

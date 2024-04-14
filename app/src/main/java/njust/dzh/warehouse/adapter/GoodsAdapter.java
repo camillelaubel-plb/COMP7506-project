@@ -47,7 +47,7 @@ public class GoodsAdapter extends BaseAdapter {
         TextView tvAmount= convertView.findViewById(R.id.amount_tv);
         //设置信息
         tvId.setText(String.valueOf(goods.get(position).getId()));
-        tvGoodsName.setText(goods.get(position).getGoodsName());
+        tvGoodsName.setText(goods.get(position).getProductName());
         tvAmount.setText(String.valueOf(goods.get(position).getAmount()));
 
         return convertView;

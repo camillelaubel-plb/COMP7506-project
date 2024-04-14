@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">仓库管理系统</string>
+    <string name="app_name">Inventory Management System</string>
     <string-array name="power">
-        <item>商品管理员</item>
-        <item>出入库人员</item>
+        <item>Product Manager</item>
+        <item>User</item>
     </string-array>
 </resources>

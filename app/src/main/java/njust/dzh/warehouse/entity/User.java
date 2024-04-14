@@ -2,11 +2,11 @@ package njust.dzh.warehouse.entity;
 
 import java.io.Serializable;
 
-//用户类，存放账号和密码以及权限
+// User Class, stores accounts' password and permission
 public class User implements Serializable {
-    private String username;//用户名
-    private String password;//密码
-    private int power;//权限
+    private String username;
+    private String password;
+    private int power;
 
     public User() {
     }

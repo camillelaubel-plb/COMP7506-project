@@ -17,7 +17,6 @@ import njust.dzh.warehouse.database.DBHelper;
 import njust.dzh.warehouse.entity.User;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    //声明布局中用到的控件变量
     private EditText edUsername;
     private EditText edPassword;
     private Button btRegister;
@@ -29,11 +28,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
-        //按钮监听
+
+        // Set Event Listeners
         btLogin.setOnClickListener(this);
         btRegister.setOnClickListener(this);
     }
-    //绑定控件
+    // Event Binding
     public void initView() {
         edUsername = findViewById(R.id.username_ed);
         edPassword = findViewById(R.id.password_ed);
@@ -42,40 +42,54 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         smb = new DBHelper(this);
     }
 
-    //监听注册和登录按钮
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.login_bt://登录按钮的点击事件
-                String username = edUsername.getText().toString().trim();//获得输入框中的账号
-                String password = edPassword.getText().toString().trim();//获得密码
-                if (username.isEmpty()||password.isEmpty()) {//如果账号或密码为空
-                    Toast.makeText(LoginActivity.this, "请输入账号和密码", Toast.LENGTH_SHORT).show();
+            // Login button click event
+            case R.id.login_bt:
+                String username = edUsername.getText().toString().trim();
+                String password = edPassword.getText().toString().trim();
+
+                // Username and Password cannot be empty
+                // Show a toast if empty
+                if (username.isEmpty()||password.isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Please enter Username and Password", Toast.LENGTH_SHORT).show();
                     break;
                 }
-                User u = smb.searchUser(username);//初始化对象
-                if (u.getUsername()!=null&&password.equals(u.getPassword())) {//密码正确
-                    if (u.getPower()==0) {//如果权限显示是超级管理员，跳到用户列表的活动
+
+                // Check DB for User info
+                User u = smb.searchUser(username);
+                // Match Password
+                if (u.getUsername()!=null&&password.equals(u.getPassword())) {
+                    // If user is admin, show UserListActivity
+                    if (u.getPower()==0) {
                         Intent intent = new Intent(LoginActivity.this, UserListActivity.class);
                         startActivity(intent);
-                        Toast.makeText(LoginActivity.this, "欢迎超级管理员", Toast.LENGTH_SHORT).show();
-                    }else {//如果是商品管理员或出入库管理员，跳到对应的活动
+                        // Welcome toast for admin user
+                        Toast.makeText(LoginActivity.this, "Welcome admin user: {username}", Toast.LENGTH_SHORT).show();
+                    }else {
+                        // If you are a Product Manager or Warehouse Manager, show GoodsListActivity
                         Intent intent = new Intent(LoginActivity.this, GoodsListActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("user", u);
                         intent.putExtra("user",bundle);
                         startActivity(intent);
                         if(u.getPower()==1){
-                            Toast.makeText(LoginActivity.this, "欢迎商品管理员", Toast.LENGTH_SHORT).show();
+                            // Welcome toast for product manager user
+                            Toast.makeText(LoginActivity.this, "Welcome Product Manager: {username}", Toast.LENGTH_SHORT).show();
                         }else{
-                            Toast.makeText(LoginActivity.this, "欢迎出入库人员", Toast.LENGTH_SHORT).show();
+                            // Welcome toast for user
+                            Toast.makeText(LoginActivity.this, "Welcome user: {username}", Toast.LENGTH_SHORT).show();
                         }
                     }
-                } else {//对象不存在即账号错误，密码不匹配则密码错误
-                    Toast.makeText(LoginActivity.this, "账号或密码错误", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Otherwise, the account does not exist or password does not match
+                    Toast.makeText(LoginActivity.this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.register_bt://注册按钮的点击事件
+
+            // Register button click event
+            case R.id.register_bt:
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 break;

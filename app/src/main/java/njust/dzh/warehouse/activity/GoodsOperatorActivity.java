@@ -55,7 +55,7 @@ public class GoodsOperatorActivity extends AppCompatActivity implements View.OnC
         edId.setFocusable(false);//键盘无法操作
         edId.setFocusableInTouchMode(false);//无法触摸
 
-        edGoodsName.setText(goods.getGoodsName());
+        edGoodsName.setText(goods.getProductName());
         edGoodsName.setEnabled(false);
         edGoodsName.setFocusable(false);//键盘无法操作
         edGoodsName.setFocusableInTouchMode(false);//无法触摸

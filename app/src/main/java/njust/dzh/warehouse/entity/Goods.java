@@ -3,21 +3,21 @@ package njust.dzh.warehouse.entity;
 import java.io.Serializable;
 
 public class Goods implements Serializable {
-    private int id;//编号
-    private String goodsName;//商品名称
-    private int amount;//商品数量
+    private int id;
+    private String productName;
+    private int amount;
 
     public Goods() {
     }
 
-    public Goods(int id, String goodsName, int amount) {
+    public Goods(int id, String productName, int amount) {
         this.id = id;
-        this.goodsName = goodsName;
+        this.productName = productName;
         this.amount = amount;
     }
 
-    public Goods(String goodsName, int amount) {
-        this.goodsName = goodsName;
+    public Goods(String productName, int amount) {
+        this.productName = productName;
         this.amount = amount;
     }
 
@@ -29,12 +29,12 @@ public class Goods implements Serializable {
         this.id = id;
     }
 
-    public String getGoodsName() {
-        return goodsName;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public int getAmount() {

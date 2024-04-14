@@ -5,6 +5,33 @@
     android:orientation="vertical"
     android:background="@drawable/user">
     <LinearLayout
+        android:id="@+id/user_search_linear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/username_ed"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:hint="Search User" />
+        <Button
+            android:id="@+id/search_bt"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:background="#C2CCCE"
+            android:textSize="25sp"
+            android:text="Search"
+            android:textColor="@color/White" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/divide_line_1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/Black" />
+    <LinearLayout
         android:id="@+id/user_title_linear"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="用户名"
+            android:text="Username"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20sp" />
@@ -28,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="密码"
+            android:text="Password"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20sp" />
@@ -41,14 +68,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="权限"
+            android:text="Permission"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20sp" />
     </LinearLayout>
 
     <TextView
-        android:id="@+id/devide_line_tv"
+        android:id="@+id/divide_line_2"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@color/Black" />
@@ -69,32 +96,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selector2"
-            android:text="添加"
+            android:background="@drawable/btn_selector"
+            android:text="Add User"
             android:textColor="@color/White"
             android:layout_marginRight="5dp"
-            android:textSize="20sp" />
-        <Button
-            android:id="@+id/select_bt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selector2"
-            android:text="查询"
-            android:layout_marginRight="5dp"
-            android:textColor="@color/White"
-            android:textSize="20sp" />
-        <Button
-            android:id="@+id/exit_bt"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_selector2"
-            android:text="退出"
-            android:textColor="@color/White"
             android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

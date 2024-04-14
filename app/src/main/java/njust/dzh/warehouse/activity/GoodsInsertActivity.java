@@ -46,7 +46,7 @@ public class GoodsInsertActivity extends AppCompatActivity implements View.OnCli
             case R.id.insert_bt:
                 String goodsName=edGoodsName.getText().toString().trim();
                 String amounts=edAmount.getText().toString().trim();
-                if(smb.searchGoods(goodsName).getGoodsName()!=null){
+                if(smb.searchGoods(goodsName).getProductName()!=null){
                     Toast.makeText(GoodsInsertActivity.this,"该商品已存在，无法添加",Toast.LENGTH_SHORT).show();
                 }else{
                     goods=new Goods(goodsName,Integer.parseInt(amounts));

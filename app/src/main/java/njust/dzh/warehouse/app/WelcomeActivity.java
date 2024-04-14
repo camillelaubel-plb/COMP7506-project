@@ -14,19 +14,21 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //去除默认标题栏
+        // Hide the Title bar on welcome page
         ActionBar actionBar=getSupportActionBar();
         if(actionBar!=null)
             actionBar.hide();
+
         setContentView(R.layout.activity_welcome);
-        Handler handler=new Handler();//消息传递对象
+        Handler handler=new Handler();
+        // After 2 seconds, show the Login Page
         handler.postDelayed(new Runnable() {
-            @Override//计时3s后跳转
+            @Override
             public void run() {
                 Intent intent=new Intent(WelcomeActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },3000);
+        },2000);
     }
 }

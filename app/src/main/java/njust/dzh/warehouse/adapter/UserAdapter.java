@@ -13,8 +13,8 @@ import njust.dzh.warehouse.R;
 import njust.dzh.warehouse.entity.User;
 
 public class UserAdapter extends BaseAdapter {
-    List<User> user;//列表
-    Context context;//上下文
+    List<User> user;
+    Context context;
 
     public UserAdapter(Context context, List<User> user) {
         this.context = context;
@@ -41,20 +41,19 @@ public class UserAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView= LayoutInflater.from(context).inflate(R.layout.user_item,parent,false);
         }
-        //绑定控件
         TextView tvUsername = convertView.findViewById(R.id.username_tv);
         TextView tvPassword = convertView.findViewById(R.id.password_tv);
         TextView tvPower = convertView.findViewById(R.id.power_tv);
-        //设置信息
+
         tvUsername.setText(user.get(position).getUsername());
         tvPassword.setText(user.get(position).getPassword());
-        //权限设置
+
         if(user.get(position).getPower()==0){
-            tvPower.setText("超级管理员");
+            tvPower.setText("Admin");
         }else if(user.get(position).getPower()==1){
-            tvPower.setText("商品管理员");
+            tvPower.setText("Product Manager");
         }else if(user.get(position).getPower()==2){
-            tvPower.setText("出入库人员");
+            tvPower.setText("User");
         }
 
         return convertView;
