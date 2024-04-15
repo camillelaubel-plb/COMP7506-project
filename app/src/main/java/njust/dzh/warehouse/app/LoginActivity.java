@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Intent intent = new Intent(LoginActivity.this, UserListActivity.class);
                         startActivity(intent);
                         // Welcome toast for admin user
-                        Toast.makeText(LoginActivity.this, "Welcome admin user: {username}", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, String.format("Welcome admin user: %s", username), Toast.LENGTH_SHORT).show();
                     }else {
                         // If you are a Product Manager or Warehouse Manager, show GoodsListActivity
                         Intent intent = new Intent(LoginActivity.this, GoodsListActivity.class);
@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         startActivity(intent);
                         if(u.getPower()==1){
                             // Welcome toast for product manager user
-                            Toast.makeText(LoginActivity.this, "Welcome Product Manager: {username}", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, String.format("Welcome Product Manager: %s", username), Toast.LENGTH_SHORT).show();
                         }else{
                             // Welcome toast for user
-                            Toast.makeText(LoginActivity.this, "Welcome user: {username}", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, String.format("Welcome user: %s", username), Toast.LENGTH_SHORT).show();
                         }
                     }
                 } else {
