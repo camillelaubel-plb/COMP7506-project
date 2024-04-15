@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.LoginActivity"/>
+        <activity android:name=".activity.UserOperatorActivity" />
         <activity android:name=".activity.UserListActivity" />
         <activity android:name=".activity.UserInsertActivity" />
         <activity android:name=".activity.GoodsListActivity" />

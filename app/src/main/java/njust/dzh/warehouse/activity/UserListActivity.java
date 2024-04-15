@@ -96,37 +96,12 @@ public class UserListActivity extends AppCompatActivity implements View.OnClickL
                 if(u.getPower()==0){
                     Toast.makeText(UserListActivity.this,"Cannot update Admin users",Toast.LENGTH_SHORT).show();
                 }else{
-                    final AlertDialog dialog=new AlertDialog.Builder(UserListActivity.this).create();
-                    LinearLayout line=(LinearLayout) getLayoutInflater().inflate(R.layout.dialog_user_edit,null);
-
-                    dialog.setView(line);
-                    dialog.show();
-
-                    Button btUpdate=findViewById(R.id.update_bt);
-                    Button btDelete=findViewById(R.id.delete_bt);
-
-                    final EditText edPassword=findViewById(R.id.password_ed);
-                    final EditText edUsername=line.findViewById(R.id.username_ed);
-                    final Spinner spPower=findViewById(R.id.power_sp);
-
-//                    btUpdate.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            u.setPassword(edPassword.getText().toString().trim());
-//                            smb.updateUserInfo(u);
-//                            Toast.makeText(UserListActivity.this,"Successfully Modified",Toast.LENGTH_SHORT).show();
-//                            dialog.dismiss();
-//                        }
-//                    });
-//
-//                    btDelete.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            smb.deleteUser(u.getUsername());
-//                            Toast.makeText(UserListActivity.this,"Successfully Deleted",Toast.LENGTH_SHORT).show();
-//                            dialog.dismiss();
-//                        }
-//                    });
+                    Intent intent=new Intent(UserListActivity.this,UserOperatorActivity.class);
+                    Bundle bundle=new Bundle();
+                    bundle.putSerializable("user",u);
+                    intent.putExtra("user",bundle);
+                    startActivity(intent);
+//                    finish();
                 }
             }
         });
