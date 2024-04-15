@@ -20,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText edUsername;
     private EditText edPassword;
     private Button btRegister;
-    private Button btExit;
     private DBHelper smb;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +28,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initView();
 
         // Set Event Listeners
-        btExit.setOnClickListener(this);
         btRegister.setOnClickListener(this);
     }
     // Event Binding
@@ -37,7 +35,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edUsername=findViewById(R.id.username_ed);
         edPassword=findViewById(R.id.password_ed);
         btRegister=findViewById(R.id.register_bt);
-        btExit=findViewById(R.id.exit_bt);
         smb=new DBHelper(this);
     }
 
@@ -63,11 +60,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     startActivity(intent);
                     finish();
                 }
-                break;
-
-            // Return to login
-            case R.id.exit_bt:
-                finish();
                 break;
         }
     }

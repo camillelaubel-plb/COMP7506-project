@@ -1,34 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/user">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/exit_bt"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
-                android:background="#C2CCCE"
-                android:textSize="25sp"
-                android:text="Back"
-                android:textColor="@color/White" />
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="36dp"
@@ -74,6 +53,10 @@
             android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:hint="Confirm Password" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="141dp"
+            android:layout_weight="1" />
         <Button
             android:id="@+id/register_bt"
             android:layout_width="369dp"
@@ -83,9 +66,5 @@
             android:textSize="25sp"
             android:background="@color/LightBLue"
             android:text="Register"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="141dp"
-            android:layout_weight="1" />
     </LinearLayout>
-</LinearLayout>
+</ScrollView>
