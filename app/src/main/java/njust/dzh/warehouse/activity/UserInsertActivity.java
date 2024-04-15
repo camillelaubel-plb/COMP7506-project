@@ -23,7 +23,6 @@ public class UserInsertActivity extends AppCompatActivity implements View.OnClic
     private EditText edPassword;
     private Spinner spPower;
     private Button btInsert;
-    private Button btBack;
     private User user;
     private DBHelper smb;
     @Override
@@ -38,11 +37,9 @@ public class UserInsertActivity extends AppCompatActivity implements View.OnClic
         edPassword=findViewById(R.id.password_ed);
         spPower=findViewById(R.id.power_sp);
         btInsert=findViewById(R.id.insert_bt);
-        btBack=findViewById(R.id.exit_bt);
         user=new User();//先声明一个空对象
         smb=new DBHelper(this);
         btInsert.setOnClickListener(this);
-        btBack.setOnClickListener(this);
         //获取修改后的下拉列表参数
         spPower.setOnItemSelectedListener(this);
         user=new User();
@@ -57,20 +54,9 @@ public class UserInsertActivity extends AppCompatActivity implements View.OnClic
                 user.setPassword(password);
                 smb.insertUser(user);
                 Toast.makeText(UserInsertActivity.this,"添加成功",Toast.LENGTH_SHORT).show();
-                //添加完后回到刚刚的活动
-                backActivity();
-                break;
-            case R.id.exit_bt:
-                //直接退出
-                backActivity();
+                finish();
                 break;
         }
-    }
-    //跳转，并销毁
-    public void backActivity(){
-        Intent intent=new Intent(UserInsertActivity.this, UserListActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     @Override

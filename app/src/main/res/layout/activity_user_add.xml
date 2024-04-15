@@ -1,108 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/user">
-    <ImageView
-        android:id="@+id/gym_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/userbg" />
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/username_tv"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
+        android:background="@drawable/user"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_weight="1" />
+        <ImageView
+            android:id="@+id/warehouse_logo"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@android:color/transparent"
             android:gravity="center"
-            android:text="用户名"
-            android:textColor="@color/ForestGreen"
-            android:textSize="20sp" />
+            android:src="@drawable/warehouse" />
+        <TextView
+            android:id="@+id/title_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="Add New User"
+            android:textColor="@color/DarkCyan"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
         <EditText
             android:id="@+id/username_ed"
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="请输入用户名"
-            android:textColor="@color/ForestGreen"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="20dp"
+            android:hint="Username"
             android:textSize="20sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/password_tv"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="密 码"
-            android:textColor="@color/ForestGreen"
-            android:textSize="20sp" />
+
         <EditText
             android:id="@+id/password_ed"
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:hint="请输入密码"
-            android:textColor="@color/ForestGreen"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:hint="Password"
             android:textSize="20sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp">
-        <TextView
-            android:id="@+id/power_tv"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="权 限"
-            android:textColor="@color/ForestGreen"
-            android:textSize="20sp" />
+
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="4"
-            android:gravity="center"
-            android:layout_height="match_parent">
-            <Spinner
-                android:id="@+id/power_sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:entries="@array/power"
-                android:spinnerMode="dropdown" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/power_tv"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="13dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Permission"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:gravity="center">
+
+                <Spinner
+                    android:id="@+id/power_sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/power"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
         </LinearLayout>
 
-    </LinearLayout>
-    <Button
-        android:id="@+id/insert_bt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_selector2"
-        android:gravity="center"
-        android:text="添 加"
-        android:textColor="@color/White"
-        android:textSize="25sp" />
-    <Button
-        android:id="@+id/exit_bt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/btn_selector2"
-        android:gravity="center"
-        android:text="返 回"
-        android:textColor="@color/White"
-        android:textSize="25sp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="141dp"
+            android:layout_weight="1" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/insert_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btn_selector"
+            android:gravity="center"
+            android:text="Add"
+            android:textColor="@color/White"
+            android:textSize="25sp" />
+    </LinearLayout>
+</ScrollView>

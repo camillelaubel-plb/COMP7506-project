@@ -11,7 +11,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +33,7 @@ public class UserListActivity extends AppCompatActivity implements View.OnClickL
     private DBHelper smb;
     private AlertDialog alertDialog=null;
     private AlertDialog.Builder builder=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,6 @@ public class UserListActivity extends AppCompatActivity implements View.OnClickL
             case R.id.insert_bt:
                 Intent intentInsert=new Intent(UserListActivity.this,UserInsertActivity.class);
                 startActivity(intentInsert);
-                finish();
                 break;
             case R.id.search_bt:
                 // On search, filter out the list of users
@@ -116,17 +115,15 @@ public class UserListActivity extends AppCompatActivity implements View.OnClickL
 //                            u.setPassword(edPassword.getText().toString().trim());
 //                            smb.updateUserInfo(u);
 //                            Toast.makeText(UserListActivity.this,"Successfully Modified",Toast.LENGTH_SHORT).show();
-//                            finish();
 //                            dialog.dismiss();
 //                        }
 //                    });
-
+//
 //                    btDelete.setOnClickListener(new View.OnClickListener() {
 //                        @Override
 //                        public void onClick(View v) {
 //                            smb.deleteUser(u.getUsername());
 //                            Toast.makeText(UserListActivity.this,"Successfully Deleted",Toast.LENGTH_SHORT).show();
-//                            finish();
 //                            dialog.dismiss();
 //                        }
 //                    });
