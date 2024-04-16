@@ -206,9 +206,7 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
         goodsAdapter = new GoodsAdapter(this, goodsList);
         lvGoods.setAdapter(goodsAdapter);
 
-        if(power==2){
-            Toast.makeText(this,"您可以进行出入库操作",Toast.LENGTH_SHORT).show();
-        }else{
+        if(power!=2){
             lvGoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
