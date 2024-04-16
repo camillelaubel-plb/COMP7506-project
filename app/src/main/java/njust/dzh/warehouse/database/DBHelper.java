@@ -23,12 +23,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Goods Table Attributes
     private static final String KY_ID = "id";
-    private static final String KY_PRODUCTNAME = "product_name";
+    private static final String KY_PRODUCTNAME = "goods_name";
     private static final String KY_AMOUNT = "amount";
 
 
     private static final String TABLE_USER = "user";
-    private static final String TABLE_PRODUCTS = "products";
+    private static final String TABLE_PRODUCTS = "goods";
 
     SQLiteDatabase db;
 

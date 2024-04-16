@@ -15,22 +15,23 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import njust.dzh.warehouse.R;
 import njust.dzh.warehouse.adapter.GoodsAdapter;
+import njust.dzh.warehouse.adapter.UserAdapter;
 import njust.dzh.warehouse.database.DBHelper;
 import njust.dzh.warehouse.entity.Goods;
 import njust.dzh.warehouse.entity.User;
 
-/*商品列表的活动*/
 public class GoodsListActivity extends AppCompatActivity implements View.OnClickListener {
-    //声明变量
     private Button btInsert;
-    private Button btSelect;
-    private Button btExit;
+    private EditText edProductName;
     private Button btImport;
     private Button btExport;
+    private Button btSearch;
+
     private ListView lvGoods;
     private GoodsAdapter goodsAdapter;
     private DBHelper smb;
@@ -40,89 +41,71 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //获取权限
         intent = getIntent();
         Bundle bundle = intent.getBundleExtra("user");
         if(bundle!=null){
             user=(User) bundle.getSerializable("user");
+            // Get Permission
             power = user.getPower();
         }
-        if (power==2) {//2是出入库人员界面
+        // If user is a normal user
+        if (power==2) {
             setContentView(R.layout.activity_goods_list_port);
-        } else {//1是商品管理员界面
+        } else {
+            // If user is admin or Product Manager
             setContentView(R.layout.activity_goods_list);
         }
         initView();
     }
-    //初始化控件
+
     public void initView() {
-        //查询按钮、退出按钮、商品列表
-        btSelect = findViewById(R.id.select_bt);
-        btExit = findViewById(R.id.exit_bt);
+        edProductName=findViewById(R.id.productName_ed);
         lvGoods = findViewById(R.id.goods_lv);
-        //插入按钮
         btInsert = findViewById(R.id.insert_bt);
-        //入库按钮、入库按钮
+        btSearch=findViewById(R.id.search_bt);
         btImport = findViewById(R.id.import_bt);
         btExport = findViewById(R.id.export_bt);
-        //初始化数据库对象
+
         smb = new DBHelper(this);
-        //如果按钮不为空则设置监听器
+
+        // For different users we use different xml files
+        // These do not have the same buttons
         if (btInsert != null) {
             btInsert.setOnClickListener(this);
         }
+
         if(btImport!=null&&btExport!=null){
             btImport.setOnClickListener(this);
             btExport.setOnClickListener(this);
         }
-        if(btSelect!=null){
-            btSelect.setOnClickListener(this);
+
+        if (btSearch != null) {
+            btSearch.setOnClickListener(this);
         }
-        btExit.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.insert_bt://添加按钮
+            // Add Product
+            case R.id.insert_bt:
                 Intent intent = new Intent(GoodsListActivity.this, GoodsInsertActivity.class);
                 startActivity(intent);
-                finish();
                 break;
-            case R.id.select_bt://查询按钮
-                //加载自定义窗口布局文件
-                final AlertDialog dialog = new AlertDialog.Builder(this).create();
-                LinearLayout line = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_goods_search, null);
-                dialog.setView(line);
-                dialog.show();
-                //初始化控件
-                Button btn = line.findViewById(R.id.search_bt_dialog);
-                final EditText edGoodsName = line.findViewById(R.id.goods_name_ed_dialog);
-                final TextView tvAmount = line.findViewById(R.id.amount_tv_dialog);
-                final TextView tvId = line.findViewById(R.id.id_tv_dialog);
-                tvAmount.setVisibility(View.INVISIBLE);
-                tvId.setVisibility(View.INVISIBLE);
-                //点击查询
-                btn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String goodsName = edGoodsName.getText().toString().trim();
-                        if (goodsName.isEmpty()) {
-                            Toast.makeText(GoodsListActivity.this, "请输入商品名称", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Goods g = smb.searchGoods(goodsName);
-                            //判断用户是否存在
-                            if (goodsName.equals(g.getProductName())) {
-                                tvAmount.setText("数量：" + g.getAmount());
-                                tvId.setText("编号：" + g.getId());
-                                tvAmount.setVisibility(View.VISIBLE);
-                                tvId.setVisibility(View.VISIBLE);
-                            } else {
-                                Toast.makeText(GoodsListActivity.this, "该商品不存在", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                });
+            case R.id.search_bt:
+                // On search, filter out the list of products
+                List<Goods> products=smb.getAllProducts();
+                String username=edProductName.getText().toString().trim();
+
+                if(username.isEmpty()){
+                    goodsAdapter=new GoodsAdapter(this,products);
+                    lvGoods.setAdapter(goodsAdapter);
+                }else{
+                    List<Goods> filteredProducts = getFilteredList(products, username);
+
+                    goodsAdapter=new GoodsAdapter(this,filteredProducts);
+                    lvGoods.setAdapter(goodsAdapter);
+                }
                 break;
             case R.id.import_bt://入库按钮
                 //加载自定义窗口布局文件
@@ -202,9 +185,6 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
                     }
                 });
                 break;
-            case R.id.exit_bt://退出按钮
-                finish();
-                break;
         }
     }
     public void updateList(){
@@ -216,30 +196,38 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onResume() {
         super.onResume();
-        //从数据库中查询所有商品信息
+        // Show all products from DB
         final List<Goods> goodsList = smb.getAllProducts();
 
-        //绑定适配器
         goodsAdapter = new GoodsAdapter(this, goodsList);
         lvGoods.setAdapter(goodsAdapter);
-        //商品管理员才有修改和删除权限
+
         if(power==2){
             Toast.makeText(this,"您可以进行出入库操作",Toast.LENGTH_SHORT).show();
         }else{
-            //列表子项的点击事件
             lvGoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Goods g = goodsList.get(position);
+
                     Intent intent = new Intent(GoodsListActivity.this, GoodsOperatorActivity.class);
-                    Goods g = goodsList.get(position);//获取商品对象
-                    Bundle bundle = new Bundle();//创建bundle
-                    bundle.putSerializable("goods", g);//放入键值对
-                    intent.putExtra("goods", bundle);//再放入intent
-                    startActivity(intent);//跳转活动
-                    finish();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("goods", g);
+                    intent.putExtra("goods", bundle);
+                    startActivity(intent);
                 }
             });
         }
+    }
+
+    private List<Goods> getFilteredList(List<Goods> products, String productToCheck) {
+        List<Goods> productList = new ArrayList<Goods>();
+        for(Goods product : products) {
+            if (product.getProductName().contains(productToCheck)) {
+                productList.add(product);
+            }
+        }
+        return productList;
     }
 
 }

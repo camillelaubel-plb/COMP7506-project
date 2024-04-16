@@ -101,7 +101,6 @@ public class UserListActivity extends AppCompatActivity implements View.OnClickL
                     bundle.putSerializable("user",u);
                     intent.putExtra("user",bundle);
                     startActivity(intent);
-//                    finish();
                 }
             }
         });

@@ -18,7 +18,6 @@ import njust.dzh.warehouse.entity.User;
 
 
 public class UserOperatorActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
-    //声明变量
     private EditText edUsername;
     private EditText edPassword;
     private Spinner spPower;
@@ -79,11 +78,13 @@ public class UserOperatorActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    // Must include to satisfy error
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         user.setPower(position+1);
     }
 
+    // Must include to satisfy error
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 

@@ -16,9 +16,7 @@ import njust.dzh.warehouse.entity.Goods;
 import njust.dzh.warehouse.entity.User;
 
 
-/*对商品进行更新和删除*/
 public class GoodsOperatorActivity extends AppCompatActivity implements View.OnClickListener {
-    //声明变量
     private EditText edId;
     private EditText edGoodsName;
     private EditText edAmount;
@@ -32,62 +30,56 @@ public class GoodsOperatorActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_operator);
-        intent = getIntent();//获取跳转过来的意图
+        intent = getIntent();
         Bundle bundle = intent.getBundleExtra("goods");
         goods = (Goods) bundle.getSerializable("goods");
         initView();
     }
 
     public void initView() {
-        //初始化控件
         edId = findViewById(R.id.id_ed);
         edGoodsName = findViewById(R.id.goods_name_ed);
         edAmount = findViewById(R.id.amount_ed);
         btUpdate = findViewById(R.id.update_bt);
         btDelete = findViewById(R.id.delete_bt);
+
         smb = new DBHelper(this);
+
         btDelete.setOnClickListener(this);
         btUpdate.setOnClickListener(this);
 
-        //设置控件参数
+        // ID cannot be changed
         edId.setText(String.valueOf(goods.getId()));
-        edId.setEnabled(false);//去掉编号点击时编辑框下面横线:
-        edId.setFocusable(false);//键盘无法操作
-        edId.setFocusableInTouchMode(false);//无法触摸
+        edId.setEnabled(false);
+        edId.setFocusable(false);
+        edId.setFocusableInTouchMode(false);
 
+        // Product Name cannot be changed
+        // Fill with Product Name
         edGoodsName.setText(goods.getProductName());
         edGoodsName.setEnabled(false);
-        edGoodsName.setFocusable(false);//键盘无法操作
-        edGoodsName.setFocusableInTouchMode(false);//无法触摸
+        edGoodsName.setFocusable(false);
+        edGoodsName.setFocusableInTouchMode(false);
 
+        // Fill with product Quantity
         edAmount.setText(String.valueOf(goods.getAmount()));
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.update_bt://更新商品
+            case R.id.update_bt:
                 int amount=Integer.parseInt(edAmount.getText().toString().trim());
                 goods.setAmount(amount);
                 smb.updateGoodsInfo(goods);
-                Toast.makeText(GoodsOperatorActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-                backActivity();
+                Toast.makeText(GoodsOperatorActivity.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.delete_bt:
                 smb.deleteGoods(goods.getId());
-                Toast.makeText(GoodsOperatorActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
-                backActivity();
+                Toast.makeText(GoodsOperatorActivity.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
         }
     }
-    void backActivity(){
-        User user=new User(1);
-        Bundle bundle=new Bundle();
-        bundle.putSerializable("user",user);
-        Intent intent =new Intent(GoodsOperatorActivity.this,GoodsListActivity.class);
-        intent.putExtra("user",bundle);
-        startActivity(intent);
-        finish();
-    }
-
 }
