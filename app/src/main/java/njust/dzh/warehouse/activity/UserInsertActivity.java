@@ -16,9 +16,7 @@ import njust.dzh.warehouse.R;
 import njust.dzh.warehouse.database.DBHelper;
 import njust.dzh.warehouse.entity.User;
 
-/*添加用户的活动*/
 public class UserInsertActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
-    //声明变量
     private EditText edUsername;
     private EditText edPassword;
     private Spinner spPower;
@@ -31,20 +29,19 @@ public class UserInsertActivity extends AppCompatActivity implements View.OnClic
         setContentView(R.layout.activity_user_add);
         initView();
     }
-    //初始化控件和设置监听器
     public void initView(){
         edUsername=findViewById(R.id.username_ed);
         edPassword=findViewById(R.id.password_ed);
         spPower=findViewById(R.id.power_sp);
         btInsert=findViewById(R.id.insert_bt);
-        user=new User();//先声明一个空对象
+
         smb=new DBHelper(this);
+
         btInsert.setOnClickListener(this);
-        //获取修改后的下拉列表参数
         spPower.setOnItemSelectedListener(this);
         user=new User();
     }
-    @Override//按钮点击事件
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.insert_bt:
@@ -53,7 +50,7 @@ public class UserInsertActivity extends AppCompatActivity implements View.OnClic
                 user.setUsername(username);
                 user.setPassword(password);
                 smb.insertUser(user);
-                Toast.makeText(UserInsertActivity.this,"添加成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserInsertActivity.this,"Successfully Added",Toast.LENGTH_SHORT).show();
                 finish();
                 break;
         }
@@ -61,7 +58,7 @@ public class UserInsertActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        user.setPower(position+1);//下标从0开始，所以加1
+        user.setPower(position+1);
     }
 
     @Override

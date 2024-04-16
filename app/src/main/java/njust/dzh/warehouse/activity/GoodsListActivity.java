@@ -107,80 +107,84 @@ public class GoodsListActivity extends AppCompatActivity implements View.OnClick
                     lvGoods.setAdapter(goodsAdapter);
                 }
                 break;
-            case R.id.import_bt://入库按钮
-                //加载自定义窗口布局文件
+            // Inbound
+            case R.id.import_bt:
+                // Show dialog
                 final AlertDialog dialog2 = new AlertDialog.Builder(this).create();
                 LinearLayout line2 = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_goods_import, null);
                 dialog2.setView(line2);
-                dialog2.show();//显示对话框
-                //绑定对话框中的控件
+                dialog2.show();
+
                 Button btn2 = line2.findViewById(R.id.import_bt_dialog);
                 final EditText edImport = line2.findViewById(R.id.goods_name_ed_dialog);
                 final EditText edAmount = line2.findViewById(R.id.import_num_ed_dialog);
+
                 btn2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //获取商品名称
                         String goodsName2 = edImport.getText().toString().trim();
-                        //获取商品对象
                         Goods tempGoods = smb.searchGoods(goodsName2);
-                        //判断商品是否存在
+                        // Check if product already exists
                         if (tempGoods.getProductName() != null) {
                             String amounts2 = edAmount.getText().toString().trim();
-                            if(amounts2.isEmpty()){//如果数量为空
-                                Toast.makeText(GoodsListActivity.this,"请输入数量",Toast.LENGTH_SHORT).show();
-                            }else{//数量不为空
-                                int amount2 = Integer.valueOf(amounts2);//字符串转整型
-                                amount2+=tempGoods.getAmount();//数量相加
-                                tempGoods.setAmount(amount2);//重新设置数量
-                                smb.updateGoodsInfo(tempGoods);//更新商品
-                                Toast.makeText(GoodsListActivity.this, "入库成功", Toast.LENGTH_SHORT).show();
+                            // If product has no quantity, add some
+                            if(amounts2.isEmpty()){
+                                Toast.makeText(GoodsListActivity.this,"Provide an Inbound Quantity",Toast.LENGTH_SHORT).show();
+                            }else{
+                                // Otherwise, add the quantities and update product
+                                int amount2 = Integer.valueOf(amounts2);
+                                amount2+=tempGoods.getAmount();
+                                tempGoods.setAmount(amount2);
+
+                                smb.updateGoodsInfo(tempGoods);
+                                Toast.makeText(GoodsListActivity.this, "Accepted, Stock Updated", Toast.LENGTH_SHORT).show();
                                 updateList();
                                 dialog2.dismiss();
                             }
                         } else {
-                            Toast.makeText(GoodsListActivity.this, "该商品不存在", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GoodsListActivity.this, "Product does not exist", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                 });
                 break;
+            // Outbound
             case R.id.export_bt:
-                //加载自定义窗口布局文件
+                // Show dialog
                 final AlertDialog dialog3 = new AlertDialog.Builder(this).create();
                 LinearLayout line3 = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_goods_export, null);
                 dialog3.setView(line3);
                 dialog3.show();
-                //初始化控件
+
                 Button btn3 = line3.findViewById(R.id.export_bt_dialog);
                 final EditText edExport = line3.findViewById(R.id.goods_name_ed_dialog);
                 final EditText edExAmount = line3.findViewById(R.id.export_num_ed_dialog);
                 btn3.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //获取控件参数，设置Goods值
                         String goodsName3 = edExport.getText().toString().trim();
                         String amounts3 = edExAmount.getText().toString().trim();
                         if(amounts3.isEmpty()){
-                            Toast.makeText(GoodsListActivity.this,"数量不能为空",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GoodsListActivity.this,"Provide an Outbound Quantity",Toast.LENGTH_SHORT).show();
                             return;
                         }
                         int amount3 = Integer.valueOf(amounts3);
-                        //判断产品是否存在
                         Goods tempGoods3 = smb.searchGoods(goodsName3);
-                        if (tempGoods3.getProductName() != null) {//如果商品存在
-                            if(amount3<=tempGoods3.getAmount()) {//如果数量足够
+                        // Check if product already exists
+                        if (tempGoods3.getProductName() != null) {
+                            // If there is enough product quantity, allow
+                            if(amount3<=tempGoods3.getAmount()) {
                                 int newAmount3 = tempGoods3.getAmount() - amount3;
                                 tempGoods3.setAmount(newAmount3);
                                 smb.updateGoodsInfo(tempGoods3);
-                                Toast.makeText(GoodsListActivity.this, "出库成功", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GoodsListActivity.this, "Shipped, Stock Updated", Toast.LENGTH_SHORT).show();
                                 updateList();
                                 dialog3.dismiss();
                             }else {
-                                Toast.makeText(GoodsListActivity.this, "库存不够，请重新输入数量", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GoodsListActivity.this, "Insufficient Stock", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(GoodsListActivity.this, "该商品不存在", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GoodsListActivity.this, "Product does not exist", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

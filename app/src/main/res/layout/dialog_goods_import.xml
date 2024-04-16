@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="商品入库"
+        android:text="Product Inbound"
         android:textStyle="bold"
         android:textSize="30sp"
         android:layout_marginBottom="20dp"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:hint="请输入商品名"
+        android:hint="Product Name"
         android:textColor="@color/DarkCyan"
         android:textSize="25sp" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:hint="入库数量"
+        android:hint="Quantity"
         android:textColor="@color/DarkCyan"
         android:textSize="25sp" />
     <Button
@@ -40,7 +40,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/btn_selector2"
         android:gravity="center"
-        android:text="确认入库"
+        android:text="Accept Stock"
         android:textColor="@color/White"
         android:textSize="25sp" />
 </LinearLayout>

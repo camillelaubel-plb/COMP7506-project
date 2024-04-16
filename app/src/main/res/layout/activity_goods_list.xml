@@ -18,7 +18,7 @@
             android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:hint="Search User" />
+            android:hint="Search Product" />
 
         <Button
             android:id="@+id/search_bt"
@@ -93,6 +93,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/insert_bt"
