@@ -1,6 +1,5 @@
-package njust.dzh.warehouse.activity;
+package edu.hku.comp2506.warehouse.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,9 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import njust.dzh.warehouse.R;
-import njust.dzh.warehouse.database.DBHelper;
-import njust.dzh.warehouse.entity.User;
+import edu.hku.comp2506.warehouse.R;
+import edu.hku.comp2506.warehouse.database.DBHelper;
+import edu.hku.comp2506.warehouse.entity.User;
 
 public class UserInsertActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
     private EditText edUsername;

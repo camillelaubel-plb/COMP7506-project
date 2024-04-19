@@ -1,4 +1,4 @@
-package njust.dzh.warehouse.app;
+package edu.hku.comp2506.warehouse.app;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import njust.dzh.warehouse.R;
+import edu.hku.comp2506.warehouse.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

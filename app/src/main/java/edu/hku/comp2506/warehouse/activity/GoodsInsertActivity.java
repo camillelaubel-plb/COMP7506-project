@@ -1,6 +1,5 @@
-package njust.dzh.warehouse.activity;
+package edu.hku.comp2506.warehouse.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,9 +9,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import njust.dzh.warehouse.R;
-import njust.dzh.warehouse.database.DBHelper;
-import njust.dzh.warehouse.entity.Goods;
+import edu.hku.comp2506.warehouse.R;
+import edu.hku.comp2506.warehouse.database.DBHelper;
+import edu.hku.comp2506.warehouse.entity.Goods;
 
 public class GoodsInsertActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edGoodsName;

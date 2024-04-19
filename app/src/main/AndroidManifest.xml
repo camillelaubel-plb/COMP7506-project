@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse">
-        <activity android:name=".app.WelcomeActivity"
+        <activity android:name="edu.hku.comp2506.warehouse.app.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,14 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.LoginActivity"/>
-        <activity android:name=".activity.UserOperatorActivity" />
-        <activity android:name=".activity.UserListActivity" />
-        <activity android:name=".activity.UserInsertActivity" />
-        <activity android:name=".activity.GoodsListActivity" />
-        <activity android:name=".app.RegisterActivity" />
-        <activity android:name=".activity.GoodsOperatorActivity" />
-        <activity android:name=".activity.GoodsInsertActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.app.LoginActivity"/>
+        <activity android:name="edu.hku.comp2506.warehouse.activity.UserOperatorActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.activity.UserListActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.activity.UserInsertActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.activity.GoodsListActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.app.RegisterActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.activity.GoodsOperatorActivity" />
+        <activity android:name="edu.hku.comp2506.warehouse.activity.GoodsInsertActivity" />
     </application>
 
 </manifest>

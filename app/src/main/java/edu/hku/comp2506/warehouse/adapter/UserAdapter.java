@@ -1,4 +1,4 @@
-package njust.dzh.warehouse.adapter;
+package edu.hku.comp2506.warehouse.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import njust.dzh.warehouse.R;
-import njust.dzh.warehouse.entity.User;
+import edu.hku.comp2506.warehouse.R;
+import edu.hku.comp2506.warehouse.entity.User;
 
 public class UserAdapter extends BaseAdapter {
     List<User> user;

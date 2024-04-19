@@ -1,4 +1,4 @@
-package njust.dzh.warehouse.database;
+package edu.hku.comp2506.warehouse.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import njust.dzh.warehouse.entity.Goods;
-import njust.dzh.warehouse.entity.User;
+import edu.hku.comp2506.warehouse.entity.Goods;
+import edu.hku.comp2506.warehouse.entity.User;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "warehouse.db";

@@ -1,4 +1,4 @@
-package njust.dzh.warehouse.activity;
+package edu.hku.comp2506.warehouse.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -18,12 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-import njust.dzh.warehouse.R;
-import njust.dzh.warehouse.adapter.GoodsAdapter;
-import njust.dzh.warehouse.adapter.UserAdapter;
-import njust.dzh.warehouse.database.DBHelper;
-import njust.dzh.warehouse.entity.Goods;
-import njust.dzh.warehouse.entity.User;
+import edu.hku.comp2506.warehouse.R;
+import edu.hku.comp2506.warehouse.adapter.GoodsAdapter;
+import edu.hku.comp2506.warehouse.database.DBHelper;
+import edu.hku.comp2506.warehouse.entity.Goods;
+import edu.hku.comp2506.warehouse.entity.User;
 
 public class GoodsListActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btInsert;

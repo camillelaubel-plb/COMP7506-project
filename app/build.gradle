@@ -7,7 +7,7 @@ android {
     buildToolsVersion "33.0.2"
 
     defaultConfig {
-        applicationId "njust.dzh.warehouse"
+        applicationId "edu.hku.comp2506.warehouse"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 1
@@ -26,7 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'njust.dzh.warehouse'
+    namespace 'edu.hku.comp2506.warehouse'
 }
 
 dependencies {

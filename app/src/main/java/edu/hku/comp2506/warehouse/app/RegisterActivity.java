@@ -1,4 +1,4 @@
-package njust.dzh.warehouse.app;
+package edu.hku.comp2506.warehouse.app;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import njust.dzh.warehouse.R;
-import njust.dzh.warehouse.activity.UserListActivity;
-import njust.dzh.warehouse.database.DBHelper;
-import njust.dzh.warehouse.entity.User;
+import edu.hku.comp2506.warehouse.R;
+import edu.hku.comp2506.warehouse.activity.UserListActivity;
+import edu.hku.comp2506.warehouse.database.DBHelper;
+import edu.hku.comp2506.warehouse.entity.User;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText edUsername;

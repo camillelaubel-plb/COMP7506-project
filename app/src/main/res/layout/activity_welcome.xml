@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:gravity="center"
-    tools:context=".app.WelcomeActivity"
+    tools:context="edu.hku.comp2506.warehouse.app.WelcomeActivity"
     android:orientation="vertical">
     <ImageView
         android:layout_width="150dp"

@@ -1,4 +1,4 @@
-package njust.dzh.warehouse.entity;
+package edu.hku.comp2506.warehouse.entity;
 
 import java.io.Serializable;
 
